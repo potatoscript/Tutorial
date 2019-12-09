@@ -1,0 +1,53 @@
+<!doctype html>
+<HTML>
+<meta http-equiv="X-UA-Compatible" name="viewport" content="IE=EmulateIE10">
+<meta charset="utf-8">
+<head>
+<link rel="icon" type="image/png" href="../../potato.js/images/img-p.png">
+<link rel="stylesheet" href="../../potato.js/css/jquery-ui.css"/>
+<link rel="stylesheet" href="../../potato.js/css/potato.css"/>
+<script type="text/javascript" src="../../potato.js/js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../../potato.js/js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../potato.js/js/Chart.bundle.js"></script>
+<script type="text/javascript" src="../../potato.js/js/Chart.utils.js"></script>
+<script type="text/javascript" src="../../potato.js/js/potato.1.1.0.js"></script>
+</head>
+<BODY>
+
+<potato-table-mytable
+ header = "No,Menu,Image,Calories,Fat"
+ data='[
+    ["1","Potato Pie","<img src=\"image/Sweet Potato Pie.jpg\" width=\"150px\" height=\"100px\">","183","13"],
+    ["2","Mashed Potato","<img src=\"image/Mashed Potato.jpg\" width=\"150px\" height=\"100px\">","455","55"]
+  ]'
+  click=myTableClick()
+  callback=myTableCallback()
+  editCell="
+  width=150px;
+  tool=keypad.htm;
+  indexCol=0;
+  editCol=[1,2,3];
+  callback=
+    function(newVal,oldVal,targetCol,SelectCol){
+    document.getElementById('remark').innerHTML=oldVal+' <b>→</b> '+newVal;
+  };
+  "
+  multipleSelect='
+    mark=〇;
+    indexCol=1;
+    selectCol=0;
+    callback=function(potato){
+      $("#div_cart").html("");
+      var t="";
+      for(var i=0;i<potato.length;i++){
+         t+=i+1+". "+potato[i]+"<br>";
+      }
+      $("#div_cart").html(t);
+    };
+  '
+></potato-table-mytable>
+
+
+
+</BODY>
+</HTML>
