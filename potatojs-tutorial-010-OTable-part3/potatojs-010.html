@@ -1,0 +1,61 @@
+<!doctype html>
+<HTML>
+<meta http-equiv="X-UA-Compatible" name="viewport" content="IE=EmulateIE10">
+<meta charset="utf-8">
+<head>
+<link rel="icon" type="image/png" href="images/img-p.png">
+<link rel="stylesheet" href="css/jquery-ui.css"/>
+<link rel="stylesheet" href="css/potato.css"/>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/Chart.bundle.js"></script>
+<script type="text/javascript" src="js/Chart.utils.js"></script>
+<script type="text/javascript" src="js/potato.1.1.0.js"></script>
+</head>
+<BODY>
+
+<o-table-mytable
+header='id,name,fat'
+data='[
+    ["1","potato","100"],
+    ["2","potato2","200"]
+]'
+editCell='
+editCol:[1,2];
+trigger:click;
+indexCol:2;
+tool:
+<table>
+  <tr>
+    <td><button class="btn" onclick=potato.getKey("potato")>potato</button></td>
+  </tr>
+  <tr>
+    <td><button class="btn" onclick=potato.getKey("CE")>CE</button></td>
+  <tr>
+    <td><button class="btn" onclick=potato.closeEditCell()>Close</button></td>
+  </tr>
+</table>
+;
+callback:function(newVal,oldVal,indexColVal,selectColIndex){
+   //alert(indexColVal);
+};
+'
+selectMultiple='
+  mark:〇;
+  indexCol:1;
+  selectCol:0;
+  callback:function(p){
+     $("#sel").html("");
+     var t="";
+     for(var i=0;i<p.length;i++){
+       t+=i+1+". "+p[i]+"<br>";
+     }
+     $("#sel").html(t);
+  }
+'
+></o-table-mytable>
+
+<div id="sel"></div>
+
+</BODY>
+</HTML>
