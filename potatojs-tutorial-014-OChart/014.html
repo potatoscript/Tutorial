@@ -1,0 +1,121 @@
+<!doctype html>
+<HTML>
+<meta http-equiv="X-UA-Compatible" name="viewport" content="IE=EmulateIE10">
+<meta charset="utf-8">
+<head>
+<link rel="icon" type="image/png" href="images/img-p.png">
+<link rel="stylesheet" href="css/jquery-ui.css"/>
+<link rel="stylesheet" href="css/potato.css"/>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/Chart.bundle.js"></script>
+<script type="text/javascript" src="js/Chart.utils.js"></script>
+<script type="text/javascript" src="js/potato.1.3.0.js"></script>
+</head>
+<BODY>
+<!--
+<o-list-mylist
+  header='a,-,-'
+  listWidth=150px
+  listTextAlign=center
+  listFontColorTD=red
+  listFontWeightTH=bold
+  data='[
+      ["1","potato","100"],
+      ["2","potato2","200"]
+  ]'
+></o-list-mylist>
+
+<o-table-mytable
+  height=200px
+  dragdrop='
+      var table = document.getElementById("mytable");
+      potato.Post(
+          "models/013_edit.php",
+          {
+            "id1"   :table.rows[potato.clickRow].cells[0].innerText,
+            "id2"   :table.rows[potato.dropRow].cells[0].innerText,
+            "head1" :table.rows[0].cells[potato.clickCol].innerText,
+            "head2" :table.rows[0].cells[potato.dropCol].innerText,
+            "body"   :potato.dragVal
+          },
+          function(response){
+          });
+  '
+  header='id,col1,col2'
+  data=models/013_read.php
+  editCell='
+    editCol:[1,2];
+    trigger:click;
+    indexCol:2;
+    tool:
+    <table>
+      <tr>
+        <td><button class="btn" onclick=potato.getKey("potato")>potato</button></td>
+      </tr>
+      <tr>
+        <td><button class="btn" onclick=potato.getKey("CE")>CE</button></td>
+      <tr>
+        <td><button class="btn" onclick=potato.closeEditCell()>Close</button></td>
+      </tr>
+    </table>
+    ;
+    callback:function(newVal,oldVal,indexColVal,selectColIndex){
+       //alert(indexColVal);
+    };
+  '
+  selectMultiple='
+    mark:〇;
+    indexCol:1;
+    selectCol:0;
+    callback:function(p){
+       $("#sel").html("");
+       var t="";
+       for(var i=0;i<p.length;i++){
+         t+=i+1+". "+p[i]+"<br>";
+       }
+       $("#sel").html(t);
+    }
+  '
+></o-table-mytable>
+-->
+<div id="sel"></div>
+
+<potato-chart-mybar
+    height=450px
+    width=600px
+    chartType=Bar
+    stacked=true
+
+    title="my OChart BAR"
+    titleDisplay=true
+
+    data = models/014.php
+    xLabelData=menu1,menu2,menu3,menu4
+    xLabelAngle=10
+		yAxesLabel="g"
+		y2AxesLabel="calories"
+    data2Label="calories"
+    dataLabel="Protein,Fat,Sugar"
+    colorIndex="#e3ff7f,#a1a4ff,yellow"
+
+    pointStyle="triangle"
+    pointBorderColorIndex="blue"
+    pointBorderWidth="2"
+
+    dataFontSize=15px
+    labelFontSize=22px
+    label2FontSize=22px
+    legendDisplay=true
+    legendPosition="bottom"
+
+		click='
+    alert(potato.chartXvalue);
+    '
+
+></potato-chart-mybar>
+
+
+
+</BODY>
+</HTML>
